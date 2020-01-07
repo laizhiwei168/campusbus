@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiwei.campusbus.dao.IUserDao">
+	
+	<sql id="allField">
+        userId,
+        username,
+        password
+    </sql>
+	
+	<!-- 根据账号查询 -->
+	<select id="selectByUserId" parameterType="int" resultType="UserPo">
+		select
+		*
+		from cimcbox.user where userId =#{userId}
+	</select>
+	
+	<!-- 根据账号查询 -->
+	<select id="selectByUsername" parameterType="String" resultType="UserPo">
+		select
+		<include refid="allField"/>
+		from cimcbox.user where username =#{username}
+	</select>
+	
+	<!-- 插入单条数据 -->
+	<insert id="add" useGeneratedKeys="true" keyProperty="userId" parameterType="UserPo">
+		insert into cimcbox.user (username,password) 
+		values(#{username},#{password})
+	</insert>
+	
+    <!-- <select id="selectByserviceId" parameterType="int" resultType="ServicePropertyPo">
+		SELECT a.propertyId,a.propertyName,b.serId,b.serviceId,b.serviceTypeId,c.serviceType,c.serviceTypeId FROM cimcbox.property as a inner join cimcbox.service as b on a.serId=b.serId inner join cimcbox.servicetype as c on b.serviceTypeId=c.serviceTypeId where a.propertyId =#{propertyId}
+	</select> -->
+</mapper>

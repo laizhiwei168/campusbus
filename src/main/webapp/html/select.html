@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="../static/css/normalize.css">
+<link type="text/css" rel="stylesheet" href="../static/css/common.css">
+<link type="text/css" rel="stylesheet" href="../static/css/style.css">
+<script src="../static/js/flickity-docs.min.js"></script>
+</head>
+<script type="text/javascript">
+function nextBtn(){
+   
+  createCookie("name","xiaoming1",1);
+  
+  var str=readCookie("name");
+  alert(str);
+  eraseCookie("name");
+}
+
+
+
+ function createCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    createCookie(name,"",-1);
+}
+
+
+</script>
+<body>
+<header class="header clearfix">
+        <div class="head_left fl font20"><a href="#">←</a></div>
+        <div class="head_center fl font16">报上名来</div>
+        <div class="head_right fr"><a href="content.html" onclick="nextBtn()">下一步</a></div>
+</header>
+<div class="mune_x"></div>
+<div class="input_bg borno_top clearfix">
+     <input type="text" placeholder="请输入你的常用手机号码" class="input_01 gary font14 fl" style="width:70%;">
+     <a href="#" class="btn_01 fr org_btn">验证</a>
+</div>
+<div class="input_bg">
+     <input type="text" value="59秒后验证码过期" class="input_01 gary font14">
+</div>
+<div class="text_bg">
+    请输入你的常用手机号码，你发布的新闻如果置顶至首页成为热帖，
+我们将通过你的预留手机号码联系你，并支付酬劳。
+</div>
+<div class="input_bg borno_top clearfix">
+         <input type="text" placeholder="请输入你的真实姓名" class="input_02 gary font14 fl">
+         <a  href="#" class="btn_02 fr">隐藏</a>
+         <a  href="#" class="btn_01 fr">公开</a>
+     </div>
+</body>
+</html>
